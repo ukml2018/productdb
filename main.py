@@ -24,20 +24,20 @@ def search_results(search):
     if search_string:
         if search.data['select'] == 'Style':
             str1 = search_string
-            print(str1)
+            #print(str1)
             qry = db_session.query(Price, Style).filter(
                   Style.item_number.contains(search_string)).filter(
                   Style.item_number == Price.item_number)
                   #Style.item_number.contains(search_string))
             results = [item[0] for item in qry.all()]
-            print(qry)
-            print(search_string)
-            print(Price.item_number.contains(search_string))
+            #print(qry)
+            #print(search_string)
+            #print(Price.item_number.contains(search_string))
         elif search.data['select'] == 'Price':
             qry = db_session.query(Price).filter(
                 Price.item_number.contains(search_string))
             results = qry.all()
-            pdb.set_trace()
+            #pdb.set_trace()
         elif search.data['select'] == 'Category':
             qry = db_session.query(Style).filter(
                 Style.catalogue_category.contains(search_string))
@@ -88,8 +88,8 @@ def save_changes(price, form, new=False):
     #album.media_type = form.media_type.data
 
     if new:
-        # Add the new album to the database
-        db_session.add(album)
+        # Add the new product to the database
+        db_session.add(price)
 
     # commit the data to the database
     db_session.commit()
