@@ -30,4 +30,4 @@ class Price(Base):
     #item_number = relationship("Item_number", backref=backref(
     #    "XXIBM_PRODUCT_PRICING", order_by=price_id))
 # create tables
-Base.metadata.create_all(engine)
+#Base.metadata.create_all(engine)
