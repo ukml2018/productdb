@@ -13,7 +13,6 @@ dash==0.27.0
 Flask-APScheduler==1.10.1
 Flask-Compress==1.4.0
 Flask-MQTT==1.0.4
-Flask==1.0.2
 holidays==0.9.8
 imutils==0.5.1
 ipykernel==5.0.0
@@ -50,5 +49,4 @@ urllib3==1.22
 flask
 flask-sqlalchemy
 Flask-WTF
-
 gunicorn
