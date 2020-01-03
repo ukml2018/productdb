@@ -5,10 +5,10 @@
 {% from "_formhelpers.html" import render_field %}
 <form method=post>
     <dl>
-        {{ render_field(form.style) }}
-        {{ render_field(form.catalogue_category) }}
-        {{ render_field(form.list_price) }}
-        {{ render_field(form.price_effective_date) }}
+        {{ render_field(form.sku) }}
+        <! ––{{ render_field(form.catalogue_category) }}
+        {{ render_field(form.list_price) }}––>
+        <! ––{{ render_field(form.price_effective_date) }} ––>
         <! ––{{ render_field(form.media_type) }} ––>
     </dl>
     <p><input type=submit value=Delete>
