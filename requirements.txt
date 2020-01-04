@@ -46,7 +46,7 @@ scipy==1.1.0
 six==1.11.0
 SQLAlchemy==1.3.0
 urllib3==1.22
+gunicorn
 flask
 flask-sqlalchemy
 Flask-WTF
-gunicorn
