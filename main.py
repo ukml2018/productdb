@@ -9,11 +9,11 @@ from db_creator import SKU, Price
 import pdb
 from flask import Flask
 application = Flask(__name__)
-app = Flask(__name__)
+#app = Flask(__name__)
 
 #pdb.set_trace()
 init_db()
-@app.route('/', methods=['GET', 'POST'])
+#@app.route('/', methods=['GET', 'POST'])
 @application.route("/", methods=['GET', 'POST'])
 def index():
     search = ProductSearchForm(request.form)
@@ -21,7 +21,7 @@ def index():
         return search_results(search)
     return render_template('index.html', form=search)
 
-@app.route('/results')
+#@app.route('/results')
 @application.route('/results')
 def search_results(search):
     results = []
@@ -63,7 +63,7 @@ def search_results(search):
         table.border = True
         #pdb.set_trace()
         return render_template('results.html', table=table)
-@app.route('/new_album', methods=['GET', 'POST'])
+#@app.route('/new_album', methods=['GET', 'POST'])
 @application.route('/new_album', methods=['GET', 'POST'])
 def new_album():
     """
@@ -99,7 +99,7 @@ def save_changes(price, form, new=False):
     # commit the data to the database
     db_session.commit()
 
-@app.route('/item/<int:id>', methods=['GET', 'POST'])
+#@app.route('/item/<int:id>', methods=['GET', 'POST'])
 @application.route('/item/<int:id>', methods=['GET', 'POST'])
 def edit(item_number):
     qry = db_session.query(Price).filter(
@@ -141,5 +141,5 @@ def delete(item_number):
     else:
         return 'Error deleting #{item_number}'.format(item_number=item_number)
 if __name__ == '__main__':
-    app.run()
-    #application.run()
+    #app.run()
+    application.run()
