@@ -3,10 +3,11 @@ from app import app
 from db_setup import init_db, db_session
 from forms import ProductSearchForm, PriceForm
 from flask import flash, render_template, request, redirect
-from models import Price, Style
+from models import Price, SKU
 from tables import Results
-from db_creator import Style, Price
+from db_creator import SKU, Price
 import pdb
+
 #pdb.set_trace()
 init_db()
 @app.route('/', methods=['GET', 'POST'])
@@ -22,29 +23,29 @@ def search_results(search):
     search_string = search.data['search']
 
     if search_string:
-        if search.data['select'] == 'Style':
+        if search.data['select'] == 'SKU':
             str1 = search_string
-            #print(str1)
-            qry = db_session.query(Price, Style).filter(
-                  Style.item_number.contains(search_string)).filter(
-                  Style.item_number == Price.item_number)
+            print(str1)
+            qry = db_session.query(Price, SKU).filter(
+                  SKU.item_number.contains(search_string)).filter(
+                  SKU.item_number == str1)
                   #Style.item_number.contains(search_string))
             results = [item[0] for item in qry.all()]
             #print(qry)
             #print(search_string)
             #print(Price.item_number.contains(search_string))
-        elif search.data['select'] == 'Price':
-            qry = db_session.query(Price).filter(
-                Price.item_number.contains(search_string))
-            results = qry.all()
+        #elif search.data['select'] == 'Price':
+        #    qry = db_session.query(Price).filter(
+        #        Price.item_number.contains(search_string))
+        #    results = qry.all()
             #pdb.set_trace()
-        elif search.data['select'] == 'Category':
-            qry = db_session.query(Style).filter(
-                Style.catalogue_category.contains(search_string))
-            results = qry.all()
+        #elif search.data['select'] == 'Category':
+        #    qry = db_session.query(Style).filter(
+        #        Style.catalogue_category.contains(search_string))
+        #    results = qry.all()
         else:
             qry = db_session.query(Price)
-            results = qry.all()
+                results = qry.all()
     else:
         qry = db_session.query(Price)
         results = qry.all()
@@ -71,15 +72,14 @@ def new_album():
         flash('Price created successfully!')
         return redirect('/')
     return render_template('new_album.html', form=form)
-
 def save_changes(price, form, new=False):
     """
     Save the changes to the database
     """
     # Get data from form and assign it to the correct attributes
     # of the SQLAlchemy table object
-    style = Style()
-    style.item_number = form.style.data
+    SKU = SKU()
+    SKU.item_number = form.SKU.data
 
     price.item_number = item_number
     price.list_price = form.list_price.data
@@ -88,8 +88,8 @@ def save_changes(price, form, new=False):
     #album.media_type = form.media_type.data
 
     if new:
-        # Add the new product to the database
-        db_session.add(price)
+        # Add the new album to the database
+        db_session.add(album)
 
     # commit the data to the database
     db_session.commit()

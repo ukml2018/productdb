@@ -6,6 +6,7 @@
 <h2>Flask Product Database</h2>
  
 <p><p>
+<a href="{{ url_for('.new_album') }}"> New Product </a>
  
 {% with messages = get_flashed_messages() %}
   {% if messages %}
