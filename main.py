@@ -27,11 +27,10 @@ def search_results(search):
             str1 = search_string
             print(str1)
             qry = db_session.query(Price, SKU).filter(
-                  SKU.item_number.contains(search_string)).filter(
-                  SKU.item_number == str1)
-                  #Style.item_number.contains(search_string))
+                  Price.item_number == SKU.item_number).filter(
+                  SKU.item_number.contains(search_string))
             results = [item[0] for item in qry.all()]
-            #print(qry)
+            print(qry)
             #print(search_string)
             #print(Price.item_number.contains(search_string))
         #elif search.data['select'] == 'Price':
@@ -45,7 +44,7 @@ def search_results(search):
         #    results = qry.all()
         else:
             qry = db_session.query(Price)
-                results = qry.all()
+            results = qry.all()
     else:
         qry = db_session.query(Price)
         results = qry.all()

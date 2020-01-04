@@ -1,7 +1,7 @@
 from wtforms import Form, StringField, SelectField
 
 class ProductSearchForm(Form):
-    choices = [('Sku', 'Sku')]
+    choices = [('SKU', 'SKU')]
     select = SelectField('Search for Price:', choices=choices)
     search = StringField('')
 class PriceForm(Form):
