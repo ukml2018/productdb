@@ -49,4 +49,5 @@ urllib3==1.22
 gunicorn
 flask
 flask-sqlalchemy
+flask_table
 Flask-WTF
