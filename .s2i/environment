@@ -1,1 +1,1 @@
-APP_CONFIG=gunicorn.conf
+APP_CONFIG=config.py
