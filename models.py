@@ -1,7 +1,11 @@
 # models.py
-from app import db
-
+#from app import db
+#from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import Column, Integer, String
+db = SQLAlchemy()
 class SKU(db.Model):
+#class SKU(base):
     __tablename__ = "XXIBM_PRODUCT_SKU"
 
     item_number = db.Column(db.String, primary_key=True)
