@@ -51,3 +51,4 @@ flask
 flask-sqlalchemy
 flask_table
 Flask-WTF
+psycopg2-binary
